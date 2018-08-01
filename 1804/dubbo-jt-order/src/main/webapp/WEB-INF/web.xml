@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="jt-order" version="2.5">
+	<display-name>jt-order</display-name>
+	
+	<!--配置前端控制  -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--添加配置文件  -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<!--导入springMVC和spring配置文件   -->
+			<param-value>classpath:/spring/applicationContext*.xml</param-value>
+		</init-param>
+		
+		<!--tomcat启动时加载spring容器和springMVC容器  -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!--关于路径的写法
+		前缀型和后缀型
+		aa.action   全路径
+		/aa			以aa开头路径
+		/			全部路径拦截
+		*.do		拦截以.do结尾后缀型路径
+		
+		"/"的说明    拦截全部请求 和静态资源(html/js/css)  后期通过配置放行静态资源
+		写/满足resultFUl结构
+	  -->
+	
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!--配置post乱码过滤器  -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!--配置登录的首页  -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

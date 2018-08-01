@@ -1,0 +1,22 @@
+1531126687857	Extract local variable 'result'
+1531203138063	Extract local variable 'result'
+1531213145794	Copy elements
+1531215618936	Copy package
+1531215649010	Delete element
+1531274418810	Rename package 'com.jt.common.factory'
+1531274515310	Copy file
+1531274519914	Delete element
+1531275488010	Copy file
+1531275502673	Delete element
+1531297800553	Extract local variable 'jsonData'
+1531297962760	Extract local variable 'jsonResult'
+1531298131341	Extract local variable 'itemResult'
+1531300546806	Extract local variable 'client'
+1531300681455	Extract local variable 'httpResponse'
+1531300768217	Extract local variable 'result'
+1531300887441	Extract local variable 'result'
+1531359933692	Copy compilation units
+1531376864535	Copy elements
+1531376921892	Copy file
+1531463861824	Copy elements
+1531533324982	Copy elements

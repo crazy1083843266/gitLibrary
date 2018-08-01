@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	namespace作用:
+	1.namespace是Mapper映射文件的唯一标识,并且该标识不能重复.
+	写法:
+	2.写法上应该和接口的路径保持一致.
+	3.映射文件中可以编辑sql,其中的ID必须和接口方法保持一致.
+ -->
+<mapper namespace="com.jt.sso.mapper.UserMapper">
+	<select id="findCheckUser" resultType="int">
+		select count(*) from tb_user where ${cloumn}=#{param}
+	</select>
+	
+	<select id="findUserByUP" resultType="User">
+		select *from tb_user where username=#{username} and password=#{password}
+	</select>
+</mapper>

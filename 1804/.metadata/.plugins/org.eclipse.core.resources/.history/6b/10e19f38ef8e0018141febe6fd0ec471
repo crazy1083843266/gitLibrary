@@ -1,0 +1,17 @@
+package wjw.cron.ex;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class test1 {
+	public static void main(String[] args) {
+		final int a=5;
+		final List<Integer> list=new ArrayList<>();
+		System.out.println(list);
+		list.add(1);
+		
+		System.out.println(list);
+		list[0] = "s";
+		
+	}
+}

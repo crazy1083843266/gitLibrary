@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace作用: 1.namespace是Mapper映射文件的唯一标识,并且该标识不能重复. 写法: 2.写法上应该和接口的路径保持一致. 
+	3.映射文件中可以编辑sql,其中的ID必须和接口方法保持一致. -->
+<mapper namespace="com.jt.order.mapper.OrderMapper">
+	<!--resultMap实现数据的封装 表 user_id, user_name, user_age 对象 userId, userName, 
+		userAge -->
+	<select id="findOrderById" resultMap="orderRM">
+		select * from tb_order
+		where order_id=#{orderId}
+
+	</select>
+
+	<resultMap type="Order" id="orderRM" autoMapping="true">
+		<id column="order_id" property="orderId" />
+		<!-- 封装一对一 订单物流信息 -->
+		<association property="orderShipping" javaType="OrderShipping"
+						column="order_id" select="orderShippingRM" />
+		
+		<!-- 封装一对多   
+			ofType：集合中元素的属性类型
+		-->
+		<collection property="orderItems" ofType="OrderItem" 
+						column="order_id" select="findOrderItems"/>
+	</resultMap>
+
+	<select id="orderShippingRM" resultType="OrderShipping">
+		select * from tb_order_shipping where order_id=#{orderId}
+	</select>
+	<select id="findOrderItems" resultType="OrderItem">
+		select * from tb_order_item where order_id=#{orderId}
+	</select>
+	<!-- type:表示指定映射的数据类型（类全名） id：标识符 column="数据表的字段名称" property="对象的属性名称" extends="" 
+		:继承另一个resultMap的映射关系 autoMapping="true" 规则：如果是单表映射，那么如果数据表的字段与对象属性名相同， 则可以省略映射步骤，可以自动映射 
+		如果是多表关联，那么全部的映射关系必须手写 如果主表的字段与对象的属性相同，则主表可以自动映射， 从表必须全部编辑映射关系，缺一不可 -->
+	<!-- <resultMap type="User" id="userRM" extends="" autoMapping="true">
+		设定主键
+		<id column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+		<result column="user_age" property="userAge" />
+
+	</resultMap> -->
+	
+	
+	<!-- 将超时的订单做关闭处理 -->
+	<update id="updateStatus">
+		
+		update tb_order set status = 6 where
+		status =1 and created &lt; #{timeOut}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

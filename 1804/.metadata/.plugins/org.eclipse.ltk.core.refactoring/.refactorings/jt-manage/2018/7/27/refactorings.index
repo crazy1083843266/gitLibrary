@@ -1,0 +1,5 @@
+1530943957057	Extract local variable 'result'
+1530946319897	Extract local variable 'itemCatss'
+1530947841084	Copy file
+1530948357892	Rename resource 'redis.properites'
+1530951507643	Extract local variable 'shardJedis'

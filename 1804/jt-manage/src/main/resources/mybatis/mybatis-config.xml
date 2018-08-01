@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--
+		Mybatis说明:
+			特点:实现自动的对象关系映射
+			pojo实体对象与数据库中表一一对应
+			使用resultMap可以实现自动的转化
+			字段			对象
+			user_id     userId
+			
+			上述的配置使用resultType不能自动的映射,
+			但是如果使用了驼峰规则的配置则可以实现自动映射
+			
+			在映射时自动的将字段中的"_"去掉之后首字母大小寻找属性之后
+			set注入.
+			
+			
+		Mybatis中的缓存介绍
+			1.一级缓存
+				级别:sqlSession
+				说明:在sqlSession内实现数据共享
+				默认:开启的
+
+			2.二级缓存
+				级别:sqlSessionFacotry级别
+				说明:在同一个sqlSessionFactory中获取sqlSession实现
+				数据共享.
+				默认:关闭的
+				缺点:mybatis二级缓存效率低.一般开发不用,
+				使用Redis/mamerche
+	  -->
+	<settings>
+		<!-- 开启驼峰自动映射 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- 二级缓存的总开关，被redis替代 -->
+		<setting name="cacheEnabled" value="false" />
+	</settings>
+	
+	<!--
+		1.创建分页对象
+			//2行代码必须连着写
+		分页后的数据 = 2.查询全部记录数  select * from tb_user limit 0,50
+		
+	  -->
+	
+	
+	<plugins>
+		<!-- 分页插件：com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<!-- 方言 -->
+			<property name="dialect" value="mysql" />
+			<!-- 该参数默认为false -->
+			<!-- 设置为true时，使用RowBounds分页会进行count查询，查询数据总条数 -->
+			<property name="rowBoundsWithCount" value="true" />
+		</plugin>
+		
+		<!-- 通用Mapper插件 -->
+		<plugin interceptor="com.github.abel533.mapperhelper.MapperInterceptor">
+			<!--主键自增回写方法,默认值MYSQL,详细说明请看文档 -->
+			<property name="IDENTITY" value="MYSQL" />
+			<!--通用Mapper接口，多个通用接口用逗号隔开 -->
+			<property name="mappers" value="com.jt.common.mapper.SysMapper" />
+		</plugin>
+	</plugins>
+	
+	
+	
+	
+	
+	
+	
+</configuration>

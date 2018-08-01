@@ -1,0 +1,30 @@
+package com.jt.web.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jt.common.service.HttpClientService;
+import com.jt.web.pojo.User;
+
+@Service
+public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private HttpClientService httpClient;
+	@Override
+	public void saveUser(User user) {
+		String url="http://sso.jt.com/user/register";
+		Map<String , String> params=new HashMap<>();
+		params.put("username", user.getUsername());
+		params.put("password", user.getPassword());
+		params.put("phone", user.getPhone());
+		params.put("email", user.getEmail());
+		String jsonData = httpClient.post(url, params);
+		
+	}
+	
+	
+}

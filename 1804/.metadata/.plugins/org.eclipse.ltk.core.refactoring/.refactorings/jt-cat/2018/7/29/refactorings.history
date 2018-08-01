@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Cart.java&apos; to &apos;dubbo-jt-api/src/main/java/com.jt.dubbo.pojo&apos;&#x0D;&#x0A;- Original project: &apos;jt-cat&apos;&#x0D;&#x0A;- Destination element: &apos;dubbo-jt-api/src/main/java/com.jt.dubbo.pojo&apos;&#x0D;&#x0A;- Original element: &apos;Cart.java&apos;" description="Copy file" destination="=dubbo-jt-api/src\/main\/java&lt;com.jt.dubbo.pojo" element1="src/main/java/com/jt/cart/pojo/Cart.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1531802519178" units="0" version="1.0"/>
+</session>

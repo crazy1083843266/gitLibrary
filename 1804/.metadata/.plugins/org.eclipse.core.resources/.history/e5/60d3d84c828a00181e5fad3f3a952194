@@ -1,0 +1,18 @@
+package com.jt.test.rabbitmq;
+
+import java.util.Arrays;
+
+import org.junit.Test;
+
+public class Sort {
+	
+	@Test
+	public void paiXu(){
+		int[] s={10,5,36,89,26,45,4,2,100};
+		//采用快速排序法进行排序
+		Arrays.sort(s);
+		for (int i : s) {
+			System.out.println(i);
+		}
+	}
+}

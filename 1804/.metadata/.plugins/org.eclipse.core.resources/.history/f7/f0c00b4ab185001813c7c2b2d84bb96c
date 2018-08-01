@@ -1,0 +1,21 @@
+package com.jt.web.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jt.common.service.HttpClientService;
+import com.jt.web.pojo.User;
+
+@Service
+public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private HttpClientService httpClient;
+	@Override
+	public void saveUser(User user) {
+		
+		
+	}
+	
+	
+}

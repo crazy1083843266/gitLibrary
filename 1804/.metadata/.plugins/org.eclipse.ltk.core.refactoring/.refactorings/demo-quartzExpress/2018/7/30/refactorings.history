@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;set&apos; from expression &apos;list.set(0,5)&apos;&#x0D;&#x0A;- Original project: &apos;demo-quartzExpress&apos;&#x0D;&#x0A;- Variable name: &apos;set&apos;&#x0D;&#x0A;- Destination method: &apos;wjw.cron.ex.test1.main()&apos;&#x0D;&#x0A;- Variable expression: &apos;list.set(0,5)&apos;&#x0D;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;set&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/test&lt;wjw.cron.ex{test1.java" name="set" replace="true" selection="274 0" stamp="1532402192862" version="1.0"/>
+</session>
